@@ -45,17 +45,15 @@
 
   <!-- For shared styles, shared-styles.html import in elements.html -->
   <style is="custom-style" include="shared-styles"></style>
-
 </head>
 
 <body unresolved class="fullbleed layout vertical">
   <span id="browser-sync-binding"></span>
   <template id="app" is="dom-bind">
     <!-- TODO(jstn): Change this hard-coding to use a websocketUrl() function once url updating works. -->
-    <ros-ros ros="{{ros}}" id="ros"></ros-ros>
-    <ros-rviz ros="{{ros}}">
-      <ros-rviz-grid></ros-rviz-grid>
-      <ros-rviz-urdf></ros-rviz-urdf>
+    <ros-rviz>
+      <ros-rviz-display><ros-rviz-grid></ros-rviz-grid></ros-rviz-display>
+      <ros-rviz-display><ros-rviz-urdf></ros-rviz-urdf></ros-rviz-display>
     </ros-rviz>
   </template>
   <!-- build:js scripts/app.js -->
