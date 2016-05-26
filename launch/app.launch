@@ -1,3 +1,9 @@
 <launch>
   <node name="tf2_web_republisher" pkg="tf2_web_republisher" type="tf2_web_republisher" />
+  <node name="ros_web_video" pkg="ros_web_video" type="ros_web_video">
+    <param name="port" value="9999" />
+    <param name="framerate" value="15" />
+    <param name="bitrate" value="250000" />
+  </node>
+  <node name="rws_rviz_rgbd_server" pkg="rws_rviz" type="rgbd_node.py" />
 </launch>
