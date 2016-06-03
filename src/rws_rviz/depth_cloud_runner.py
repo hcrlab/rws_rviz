@@ -109,3 +109,8 @@ class DepthCloudRunner(object):
         for key, process in self._encoder_processes.items():
             print 'Shutting down encoder for {}'.format(key)
             process.kill()
+        self._converter_clients.clear()
+        self._converter_processes.clear()
+        self._encoder_clients.clear()
+        self._encoder_processes.clear()
+
