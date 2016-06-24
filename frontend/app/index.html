@@ -50,10 +50,8 @@
 <body unresolved class="fullbleed layout vertical">
   <span id="browser-sync-binding"></span>
   <template id="app" is="dom-bind">
-    <!-- TODO(jstn): Change this hard-coding to use a websocketUrl() function once url updating works. -->
-    <ros-rviz>
-      <ros-rviz-display><ros-rviz-grid></ros-rviz-grid></ros-rviz-display>
-      <ros-rviz-display><ros-rviz-urdf></ros-rviz-urdf></ros-rviz-display>
+    <ros-websocket auto id="websocket" url="{{url}}" ros="{{ros}}"></ros-websocket>
+    <ros-rviz ros="{{ros}}" websocket-url="{{url}}">
     </ros-rviz>
   </template>
   <!-- build:js scripts/app.js -->
