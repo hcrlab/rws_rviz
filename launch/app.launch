@@ -1,3 +1,5 @@
 <launch>
-  <node name="rws_rviz_rgbd_server" pkg="rws_rviz" type="rgbd_node.py" />
+  <!-- Assume the rosbridge_server, tf2_web_republisher, Collada server, and ros_web_video are already running. -->
+  <!-- Interactive marker proxy is needed per topic. -->
+  <!-- See https://github.com/jstnhuang/ros-rviz/wiki/User-guide -->
 </launch>
