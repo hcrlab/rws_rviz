@@ -5,7 +5,6 @@ project(rws_rviz)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  message_generation
   rospy
 )
 
@@ -50,13 +49,9 @@ catkin_python_setup()
 # )
 
 ## Generate services in the 'srv' folder
-add_service_files(
-  FILES
-  StartDepthCloud.srv
-  StartPointCloud.srv
-  StopDepthCloud.srv
-  StopPointCloud.srv
-)
+#add_service_files(
+#  FILES
+#)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -66,9 +61,9 @@ add_service_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-)
+#generate_messages(
+#  DEPENDENCIES
+#)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -102,7 +97,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES rws_rviz
-  CATKIN_DEPENDS message_runtime rospy
+  CATKIN_DEPENDS rospy
 #  DEPENDS system_lib
 )
 
