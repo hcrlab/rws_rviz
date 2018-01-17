@@ -1,0 +1,6 @@
+{
+  "name": "rws-rviz",
+  "short_name": "rws-rviz",
+  "start_url": "/",
+  "display": "standalone"
+}

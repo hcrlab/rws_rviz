@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>ROS Visualizer</title>
+    <meta name="description" content="ROS visualizer">
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <link rel="import" href="bower_components/polymer/lib/elements/dom-bind.html">
+    <link rel="import" href="bower_components/ros-websocket/ros-websocket.html">
+    <link rel="import" href="bower_components/ros-rviz/ros-rviz.html">
+
+    <style>
+      html, body {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body unresolved>
+    <dom-bind id="t">
+      <template is="dom-bind">
+        <ros-websocket auto id="websocket" url="{{url}}" ros="{{ros}}"></ros-websocket>
+        <ros-rviz id="rviz" ros="{{ros}}" websocket-url="{{url}}"></ros-rviz>
+      </template>
+    </dom-bind>
+  </body>
+  <script>
+    var t = document.querySelector('#t');
+    var websocket = t.$.websocket;
+    var rviz = t.$.rviz;
+    var config = {
+      "globalOptions": {
+        "url": "ws://mayarobot-wired.cs.washington.edu:9090",
+        "background": "#113344",
+        "colladaLoader": "collada2",
+        "colladaServer": "http://mayarobot-wired.cs.washington.edu:8001/",
+        "fixedFrame": "/base_link",
+        "videoServer": "http://mayarobot-wired.cs.washington.edu:9998"
+      },
+      "sidebarOpened": true,
+      "displays": [
+        {
+          "isShown": true,
+          "name": "Grid",
+          "options": {
+            "cellSize": "1",
+            "color": "#cccccc",
+            "numCells": "10"
+          },
+          "type": "grid"
+        },
+        {
+          "isShown": true,
+          "name": "Robot model",
+          "options": {
+            "param": "robot_description"
+          },
+          "type": "urdf"
+        }
+      ]
+    } 
+    websocket.addEventListener('connection', function() {
+      console.log('Connected to the websocket server.');
+      rviz.config = config;
+    });
+  </script>
+</html>
